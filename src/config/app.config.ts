@@ -1,0 +1,4 @@
+export const APP_CONFIG = {
+  DEFAULT_STOCK_PRICE: 100,
+  SHARE_DECIMAL_PLACES: 3,
+};
