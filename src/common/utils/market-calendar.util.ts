@@ -1,6 +1,6 @@
-import { DateTime } from "luxon";
+import { DateTime } from 'luxon';
 
-const MARKET_TIMEZONE = "America/New_York";
+const MARKET_TIMEZONE = 'America/New_York';
 const MARKET_OPEN_HOUR = 9;
 const MARKET_OPEN_MINUTE = 30;
 const MARKET_CLOSE_HOUR = 16;
@@ -10,8 +10,7 @@ export function getExecutionDate(): string {
 
   if (isWeekend(now)) {
     now = getNextMonday(now);
-  } 
-  else if (!isMarketOpen(now)) {
+  } else if (!isMarketOpen(now)) {
     if (isAfterMarketClose(now)) {
       now = getNextTradingDay(now);
     }
@@ -21,7 +20,7 @@ export function getExecutionDate(): string {
 }
 
 function isWeekend(date: DateTime): boolean {
-  return date.weekday === 6 || date.weekday === 7; 
+  return date.weekday === 6 || date.weekday === 7;
 }
 
 function isMarketOpen(date: DateTime): boolean {
@@ -44,7 +43,7 @@ function isAfterMarketClose(date: DateTime): boolean {
 }
 
 function getNextTradingDay(date: DateTime): DateTime {
-  let next = date.plus({ days: 1 });
+  const next = date.plus({ days: 1 });
 
   if (isWeekend(next)) {
     return getNextMonday(next);

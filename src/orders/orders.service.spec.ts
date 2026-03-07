@@ -9,10 +9,7 @@ describe('OrdersService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        OrdersService,
-        OrdersRepository,
-      ],
+      providers: [OrdersService, OrdersRepository],
     }).compile();
 
     service = module.get<OrdersService>(OrdersService);
@@ -24,7 +21,6 @@ describe('OrdersService', () => {
   });
 
   describe('createOrder', () => {
-
     it('should split allocation correctly', () => {
       const dto = {
         orderType: 'BUY',
@@ -119,16 +115,13 @@ describe('OrdersService', () => {
       const dto = {
         orderType: 'BUY',
         totalAmount: 100,
-        portfolio: [
-          { symbol: 'AAPL', weight: 100, price: 3 },
-        ],
+        portfolio: [{ symbol: 'AAPL', weight: 100, price: 3 }],
       };
 
       const result = service.createOrder(dto as any);
 
       expect(result.breakdown[0].quantity).toBeCloseTo(33.333, 3);
     });
-
   });
 
   describe('getAllOrders', () => {
